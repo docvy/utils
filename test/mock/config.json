@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "timeout_ms": 45000
+  },
+  "server": {
+    "port": 9432
+  }
+}
