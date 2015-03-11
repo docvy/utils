@@ -198,4 +198,41 @@ describe("utils.getPath", function() {
 });
 
 
+describe("utils.defineError()", function() {
+
+  it("return an instance of an Error", function() {
+    var DError = utils.defineError("SAMPLE", "just sample error");
+    should(new DError()).be.an.instanceOf(Error);
+  });
+
+  it("sets an error code", function() {
+    var code = "ECODE_JUMPY";
+    var error = new (utils.defineError(code, "sample text"))();
+    should(error.code).eql(code);
+  });
+
+  it("sets a default message", function() {
+    var defaultMessage = "JUMPY BIRDY";
+    var error = new (utils.defineError("EFOR", defaultMessage))();
+    should(error.message).eql(defaultMessage);
+  });
+
+  it("allows custom message", function() {
+    var DError = utils.defineError("EFORME", "some message");
+    var customMessage = "some custom, custom message";
+    var error = new DError(customMessage);
+    should(error.message).eql(customMessage);
+  });
+
+  it.skip("allows setting parent errors", function() {
+    var _Error_1 = utils.defineError("ERROR_1", "1st message");
+    var _Error_2 = utils.defineError("ERROR_2", "2nd message");
+    var error1 = new Error_1();
+    var error2 = new Error_2(error1);
+    should(error2.parent).be.an.instanceOf(Error).and.eql(error1);
+  });
+
+});
+
+
 })(); // Wrapper
