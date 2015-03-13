@@ -60,6 +60,10 @@ describe("utils.configure", function() {
     utils.getOptions().should.eql(obj);
   });
 
+  it.skip("isolates configurations for each require", function() {
+    
+  });
+
 });
 
 
@@ -200,11 +204,6 @@ describe("utils.getPath", function() {
 
 describe("utils.defineError()", function() {
 
-  it("return an instance of an Error", function() {
-    var DError = utils.defineError("SAMPLE", "just sample error");
-    should(new DError()).be.an.instanceOf(Error);
-  });
-
   it("sets an error code", function() {
     var code = "ECODE_JUMPY";
     var error = new (utils.defineError(code, "sample text"))();
@@ -217,6 +216,29 @@ describe("utils.defineError()", function() {
     should(error.message).eql(defaultMessage);
   });
 
+});
+
+
+describe("error constructor from utils.defineError", function() {
+  var Error_1 = utils.defineError("ERROR_1", "1st message");
+  var Error_2 = utils.defineError("ERROR_2", "2nd message");
+
+  it("returns an instance of an Error", function() {
+    should(new Error_1()).be.an.instanceOf(Error);
+  });
+
+  it("code should be capitalized", function() {
+    var errorCode = "esample";
+    var Error_1 = utils.defineError(errorCode, "msg");
+    var error = new Error_1();
+    should(error.code).eql(errorCode.toUpperCase());
+  });
+
+  it("code and name are the same thing", function() {
+    var error = new Error_1();
+    should(error.code).eql(error.name);
+  });
+
   it("allows custom message", function() {
     var DError = utils.defineError("EFORME", "some message");
     var customMessage = "some custom, custom message";
@@ -224,15 +246,29 @@ describe("utils.defineError()", function() {
     should(error.message).eql(customMessage);
   });
 
-  it.skip("allows setting parent errors", function() {
-    var _Error_1 = utils.defineError("ERROR_1", "1st message");
-    var _Error_2 = utils.defineError("ERROR_2", "2nd message");
+  it("allows setting parent errors", function() {
     var error1 = new Error_1();
     var error2 = new Error_2(error1);
     should(error2.parent).be.an.instanceOf(Error).and.eql(error1);
   });
 
-});
+  it(".setParent sets parent error", function() {
+    var error1 = new Error_1();
+    var error2 = new Error_2();
+    error2.setParent(error1);
+    should(error2.parent).be.an.instanceOf(Error).and.eql(error1);
+  });
 
+  it("comes with a stack when instantiated", function() {
+    var error1 = new Error_1();
+    should(error1.stack).be.ok;
+  });
+
+  it(".withoutStack returns an error with no stack", function() {
+    var error1 = (new Error_1()).withoutStack();
+    should(error1.stack).not.be.ok;
+  });
+
+});
 
 })(); // Wrapper
