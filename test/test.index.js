@@ -11,6 +11,7 @@
 
 
 // builtin modules
+var fs = require("fs");
 var path = require("path");
 
 
@@ -197,6 +198,20 @@ describe("utils.getPath", function() {
   it("returns null if no path is found", function() {
     should(utils.getPath()).be.null;
     should(utils.getPath("non-existing-path")).be.null;
+  });
+
+  it("creates the path if it does not exist", function() {
+    var pathToLogs = utils.getPath("app.logs");
+    var tmpPathToLogs = pathToLogs + "_tmp";
+    try {
+      fs.renameSync(pathToLogs, tmpPathToLogs);
+    } catch (err) { /* may be we dont have logs yet */}
+    pathToLogs = utils.getPath("app.logs");
+    should(fs.existsSync(pathToLogs)).eql(true);
+    fs.rmdirSync(pathToLogs);
+    try {
+      fs.renameSync(tmpPathToLogs, pathToLogs);
+    } catch (err) { /* may be we dont have logs yet */}
   });
 
 });

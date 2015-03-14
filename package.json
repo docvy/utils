@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/GochoMugo/docvy-utils",
   "dependencies": {
-    "lodash": "latest"
+    "lodash": "latest",
+    "mkdirp": "latest"
   },
   "devDependencies": {
     "grunt": "latest",
