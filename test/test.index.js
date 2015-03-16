@@ -51,18 +51,23 @@ describe("utils.configure", function() {
 
   it("allows passing a path to a config file", function() {
     var _path = __dirname + "/mock/config.json";
-    utils.configure(_path);
-    utils.getOptions().should.eql(require(_path));
+    var _utils = utils.configure(_path);
+    _utils.getOptions().should.eql(require(_path));
   });
 
   it("allows passing a config object", function() {
     var obj = { bazooka: "true dat" };
-    utils.configure(obj);
-    utils.getOptions().should.eql(obj);
+    var _utils = utils.configure(obj);
+    _utils.getOptions().should.eql(obj);
   });
 
-  it.skip("isolates configurations for each require", function() {
-    
+  it("isolates configurations for each configure", function() {
+    var isolation1 = { jim: "parsons" };
+    var isolation2 = { theory: "big bang" };
+    var _utils1 = utils.configure(isolation1);
+    var _utils2 = utils.configure(isolation2);
+    _utils1.getOptions().should.eql(isolation1);
+    _utils2.getOptions().should.eql(isolation2); 
   });
 
 });
@@ -117,7 +122,7 @@ describe("utils.getOptions", function() {
 
   before(function() {
     reRequireUtils();
-    utils.configure(configFile);
+    utils = utils.configure(configFile);
   });
 
   it("should return options in config.json if called without arg", function() {
