@@ -1,2 +1,12 @@
-#ignore tests
+# tests
 test/
+
+# ci config file
+.travis.yml
+
+# jshint config file
+.jshintrc
+
+# grunt script
+Gruntfile.js
+
