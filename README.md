@@ -6,7 +6,7 @@
 **Bleeding Edge**
 
 ```bash
-⇒ npm install GochoMugo/docvy-utils#develop
+⇒ npm install docvy/utils#develop
 ```
 
 
@@ -42,5 +42,6 @@ var utils = require("docvy-utils");
 
 __The MIT License (MIT)__
 
-Copyright (c) 2015 GochoMugo mugo@forfuture.co.ke
+Copyright (c) 2015 Forfuture <we@forfuture.co.ke>
+Copyright (c) 2015 GochoMugo <mugo@forfuture.co.ke>
 
