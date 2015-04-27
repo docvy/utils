@@ -190,14 +190,15 @@ describe("utils.getPath", function() {
 
   it("returns application-specific paths", function() {
     var homePath = utils.getPath("app.home");
+    var cachePath = utils.getPath("app.cache");
+    var pluginsCachePath = utils.getPath("app.cache.plugins");
     var logsPath = utils.getPath("app.logs");
     var pluginsPath = utils.getPath("app.plugins");
-    var paths = [homePath, logsPath, pluginsPath];
+    var paths = [homePath, cachePath, pluginsCachePath,
+      logsPath, pluginsPath];
     paths.forEach(function(_path) {
       _path.should.be.a.String;
     });
-    logsPath.should.eql(path.resolve(homePath + "/logs"));
-    pluginsPath.should.eql(path.resolve(homePath + "/plugins"));
   });
 
   it("returns null if no path is found", function() {
@@ -210,13 +211,13 @@ describe("utils.getPath", function() {
     var tmpPathToLogs = pathToLogs + "_tmp";
     try {
       fs.renameSync(pathToLogs, tmpPathToLogs);
-    } catch (err) { /* may be we dont have logs yet */}
+    } catch (err) { /* may be we dont have logs yet */ }
     pathToLogs = utils.getPath("app.logs");
     should(fs.existsSync(pathToLogs)).eql(true);
     fs.rmdirSync(pathToLogs);
     try {
       fs.renameSync(tmpPathToLogs, pathToLogs);
-    } catch (err) { /* may be we dont have logs yet */}
+    } catch (err) { /* may be we dont have logs yet */ }
   });
 
 });
