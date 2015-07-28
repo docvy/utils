@@ -53,6 +53,31 @@ describe("utils.defineCallback", function() {
 });
 
 
+describe("utils.defineError", function() {
+    it("returns a Error class", function() {
+        var ErrorClass = utils.defineError("sample", "message");
+        should(ErrorClass).be.a.Function();
+        var err = new ErrorClass();
+        should(err).be.an.instanceOf(ErrorClass);
+    });
+
+    it("allows a code", function() {
+        var code = "ESOMECODE";
+        var ErrorClass = utils.defineError(code, "message");
+        var err = new ErrorClass();
+        should(err.toString()).containEql(code);
+    });
+
+    it("allows a message", function() {
+        var msg = "message is here";
+        var ErrorClass = utils.defineError("x", msg);
+        var err = new ErrorClass();
+        should(err.message).containEql(msg);
+        should(err.toString()).containEql(msg);
+    });
+});
+
+
 describe("utils.getPath", function() {
     it("returns application-specific paths", function() {
         var homePath = utils.getPath("app.home");
