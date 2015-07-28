@@ -9,7 +9,7 @@ deploy:
   provider: npm
   email: mugo@forfuture.co.ke
   api_key:
-    secure: f0Rg2I89NofomtI1oEHqpVtZQxLpM/k9qwk5yrUZNdAXehCkAntYeYIABCLP0EJ0diYwIKG8vSkUFP39q8rgV6HTn6n5ouWGpyHVdvcBLO+tmtrnkxb35zYQOKGS00D97AiuCLqNMcJjcShenB3rCvEYSKnRbEsNhvXdQIMRG3Q=
+    secure: CSPz2DDN3zgBS+sg9Y05sO/TUe19aJqFtcQ+sIHoy5qAQ6axsp4ZqX6m4t9dBq+zUIWijxhK71VxPEJv4nJCCJ0N4t2VokBfBWYZXb7kn3LlK+Pc524mW3IMVoQ7ULk72ffasTnlq/pYcz6iE1HF028krR+Ld0FaXFiRlDnPGwM=
   on:
     tags: true
     repo: docvy/utils
