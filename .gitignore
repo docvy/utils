@@ -1,2 +1,5 @@
 # npm-installed modules
 node_modules/
+
+# coverage
+coverage/

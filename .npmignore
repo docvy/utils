@@ -4,9 +4,11 @@ test/
 # ci config file
 .travis.yml
 
-# jshint config file
-.jshintrc
+# eslint config file
+.eslintrc
 
-# grunt script
+# editor config file
+.editorconfig
+
+# for Grunt
 Gruntfile.js
-
