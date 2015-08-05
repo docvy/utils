@@ -1,9 +1,9 @@
 /**
-* Tests against our utilities
-*
-* The MIT License (MIT)
-* Copyright (c) 2015 GochoMugo <mugo@forfuture.co.ke>
-*/
+ * Tests against our utilities
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2015 GochoMugo <mugo@forfuture.co.ke>
+ */
 
 
 "use strict";

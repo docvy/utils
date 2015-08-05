@@ -1,6 +1,6 @@
 {
     "name": "docvy-utils",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "general-purpose docvy utilities",
     "main": "lib/index.js",
     "scripts": {
@@ -34,7 +34,7 @@
         "coveralls": "^2.11.3",
         "grunt": "^0.4.5",
         "grunt-cli": "^0.1.13",
-        "grunt-eslint": "^14.0.0",
+        "grunt-eslint": "^17.0.0",
         "grunt-mocha-test": "^0.12.7",
         "istanbul": "^0.3.17",
         "load-grunt-tasks": "^3.2.0",

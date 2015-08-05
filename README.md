@@ -3,8 +3,8 @@
 
 [![node](https://img.shields.io/node/v/docvy-utils.svg?style=flat-square)](https://www.npmjs.com/package/docvy-utils) [![npm](https://img.shields.io/npm/v/docvy-utils.svg?style=flat-square)](https://www.npmjs.com/package/docvy-utils) [![Travis](https://img.shields.io/travis/docvy/utils.svg?style=flat-square)](https://travis-ci.org/docvy/utils) [![Gemnasium](https://img.shields.io/gemnasium/docvy/utils.svg?style=flat-square)](https://gemnasium.com/docvy/utils) [![Coveralls](https://img.shields.io/coveralls/docvy/utils.svg?style=flat-square)](https://coveralls.io/github/docvy/utils?branch=master)
 
-## installation:
 
+## installation:
 
 ```bash
 ⇒ npm install docvy-utils
@@ -17,7 +17,7 @@
 var utils = require("docvy-utils");
 ```
 
-The exported module object has **all** the properties from the module object from the built-in `util` module i.e. `require("util")` is cloned to the above export module object.
+The exported module object has **all** the properties from the built-in `util` module i.e. `require("util")` is cloned to the above export module object.
 
 
 ### utils.defineCallback([callback])
@@ -27,6 +27,19 @@ Always returns a function that can be used in place of a callback, if none has b
 * `callback` (Function):
   * you would normally pass the parameter suspected to be the callback.
   * if it is **not** a function, a new function will returned instead.
+
+
+### utils.defineError(code, message)
+
+Generates a new Error class that can be used to instantiate a new error.
+
+* `code` (String): error code e.g. `"ECODE"`
+* `message` (String): error message e.g. `"error message due to null argument"`
+
+
+### utils.errors
+
+This holds a reference to the [common-errors](https://github.com/shutterstock/node-common-errors) module.
 
 
 ### utils.getPath(pathname)
