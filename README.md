@@ -58,6 +58,13 @@ Returns application-specific paths. These paths are absolute.
 **Note:** The target path is created if not yet existent.
 
 
+### utils.loadConfig(abspath)
+
+Loads a configuration file at the absolute path `abspath`. **Note**: an **error** is thrown if the path is broken or if the file pointed by the path does **not** have valid JSON.
+
+An immutable object is returned.
+
+
 ## license:
 
 __The MIT License (MIT)__
