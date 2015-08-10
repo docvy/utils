@@ -11,6 +11,7 @@
 
 // builtin modules
 var fs = require("fs");
+var path = require("path");
 
 
 // npm-installed modules
@@ -111,5 +112,24 @@ describe("utils.getPath", function() {
         try {
             fs.renameSync(tmpPathToLogs, pathToLogs);
         } catch (err) { /* may be we dont have logs yet */ }
+    });
+});
+
+
+describe("utils.loadConfig", function() {
+    var mockPath = path.join(__dirname, "mock/config.json");
+
+    it("returns an immutable object", function() {
+        var config = utils.loadConfig(mockPath);
+        should(config).be.an.Object();
+        should.throws(function() {
+            config.server = null;
+        });
+    });
+
+    it("throws an error if path is broken", function() {
+        should.throws(function() {
+            utils.loadConfig(__dirname);
+        });
     });
 });

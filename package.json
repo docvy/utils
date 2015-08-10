@@ -1,6 +1,6 @@
 {
     "name": "docvy-utils",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "description": "general-purpose docvy utilities",
     "main": "lib/index.js",
     "scripts": {
@@ -27,6 +27,7 @@
     "homepage": "https://github.com/docvy/utils",
     "dependencies": {
         "common-errors": "^0.5.1",
+        "fixed-object": "^0.0.0",
         "lodash": "^3.10.0",
         "mkdirp": "^0.5.1"
     },
